@@ -2,6 +2,7 @@
 const qrForm = document.getElementById('qrForm');
 const urlInput = document.getElementById('urlInput');
 const generateBtn = document.getElementById('generateBtn');
+const sizeSelect = document.getElementById('sizeSelect');
 const loadingSpinner = document.getElementById('loadingSpinner');
 const generateBtnText = document.getElementById('generateBtnText');
 const qrcodeContainer = document.getElementById('qrcodeContainer');
@@ -10,6 +11,8 @@ const qrcodeCanvas = document.getElementById('qrcodeCanvas');
 qrForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const url = urlInput.value.trim();
+    const size = parseInt(sizeSelect.value);
+
 
     if (url === '') {
         return;
@@ -28,8 +31,14 @@ qrForm.addEventListener('submit', function (event) {
         return;
     }
 
+    // Generate QR code with selected size
+    const options = {
+        width: size,
+        height: size,
+      };
+
     // Generate QR code
-    QRCode.toCanvas(qrcodeCanvas, url, function (error) {
+    QRCode.toCanvas(qrcodeCanvas, url, options, function (error) {
         if (error) {
             loadingSpinner.classList.add('hidden');
             generateBtnText.classList.remove('hidden');

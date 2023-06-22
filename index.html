@@ -23,6 +23,16 @@
 
     <form id="qrForm" class="flex flex-col">
       <input id="urlInput" type="text" class="border-gray-300 rounded-md px-3 py-2 mb-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter website URL" required>
+
+      <div class="flex items-center mb-3 mt-3">
+        <label for="sizeSelect" class="mr-2">QR Code Size</label>
+        <select id="sizeSelect" class="border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+          <option value="128">128x128</option>
+          <option value="256">256x256</option>
+          <option value="512">512x512</option>
+        </select>
+      </div>
+
       <button id="generateBtn" type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 font-semibold transition-colors hover:bg-blue-600">
         <span id="generateBtnText">Generate QR Code</span>
         <svg id="loadingSpinner" class="animate-spin h-4 w-4 text-white ml-2 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
